@@ -15,9 +15,19 @@ export default function App() {
 
   const addHandler = (text) => {
     setListOfItems((list) => {
-      return [{ text: text, index: Math.random().toString() }, ...list];
+      return [
+        { text: text, key: Math.random().toString(36).substring(7) },
+        ...list,
+      ];
     });
   };
+
+  const deleteHandler = (key) => {
+    setListOfItems((list) => {
+      return list.filter((listOfItems) => listOfItems.key != key);
+    });
+  };
+
   return (
     <View>
       <Header />
@@ -25,7 +35,9 @@ export default function App() {
       <View>
         <FlatList
           data={listOfItems}
-          renderItem={({ item }) => <List element={item} />}
+          renderItem={({ item }) => (
+            <List element={item} deleteHandler={deleteHandler} />
+          )}
         />
       </View>
     </View>
