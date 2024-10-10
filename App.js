@@ -6,11 +6,11 @@ import Form from './components/Form';
 
 export default function App() {
   const [listOfItems, setListOfItems] = useState([
-    { text: 'Buy milk', index: 1 },
-    { text: 'Buy fruits', index: 1 },
-    { text: 'Wash the car', index: 1 },
-    { text: 'Writhe some code', index: 1 },
-    { text: 'Meet friends', index: 1 },
+    { text: 'Buy milk', key: '1' },
+    { text: 'Buy fruits', key: '2' },
+    { text: 'Wash the car', key: '3' },
+    { text: 'Writhe some code', key: '4' },
+    { text: 'Meet friends', key: '5' },
   ]);
 
   const addHandler = (text) => {
