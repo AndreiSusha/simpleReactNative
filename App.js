@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, FlatList, Text } from 'react-native';
 import Header from './components/Header';
 import List from './components/List';
+import Form from './components/Form';
 
 export default function App() {
   const [listOfItems, setListOfItems] = useState([
@@ -12,9 +13,15 @@ export default function App() {
     { text: 'Meet friends', index: 1 },
   ]);
 
+  const addHandler = (text) => {
+    setListOfItems((list) => {
+      return [{ text: text, index: Math.random().toString() }, ...list];
+    });
+  };
   return (
     <View>
       <Header />
+      <Form addHandler={addHandler} />
       <View>
         <FlatList
           data={listOfItems}
